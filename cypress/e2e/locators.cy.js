@@ -1,5 +1,5 @@
 
-/// <reference types="cypress"/>
+// <reference types="cypress"/>
 
 describe('Find or get Elements by using Different Locators', () =>{
     beforeEach(() => {
@@ -38,4 +38,31 @@ describe('Find or get Elements by using Different Locators', () =>{
         cy.get('button').should('contain','Login').click();
 
     })
+
+    it('Check finding elements my traveling through DOM', () => {
+        // travel to find the login button:  locate username box - go to parent form and -then find button
+        cy.get('input[name="username"]').parents('form').find('button').should('contain','Login').click;
+
+
+    })
+
+
+     it.only('Check different type of Assertions', () => {
+
+        // Cypress itself usses assertions provided by Chai and Sinon and jQuery library
+        // Should assertion
+        cy.get('#wooden_spoon')
+        .should('contain','Login')
+        .and('have.class','btn btn-primary');
+
+        // expect assertion: explicit assertion, creates a subject of our test, then implement different actions
+        cy.get('#wooden_spoon').then((buttonElement) =>{
+            expect(buttonElement).to.have.text('Login');
+            expect(buttonElement).to.have.class('btn btn-primary');
+
+            
+        }) 
+    })
+
+   
 })
