@@ -66,7 +66,7 @@ describe('Input Forms Tests', () => {
   })
 
   it.skip('Check selection of all select dropdown options', () => {
-    
+    // we will provide our test data through fixtures folder as JSON object, then use that data to verify select values
 
   })
 });
