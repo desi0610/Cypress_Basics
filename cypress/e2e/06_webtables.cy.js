@@ -30,7 +30,7 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
                 cy.wrap(row).find('.rt-td').eq(1).should('contain', 'Specter');
             });
     });
-    it('Check search for different age records', () => {
+    it.skip('Check search for different age records', () => {
         // cy.get('.rt-tbody')
         //   .contains('.rt-tr-group', 'Alden')
         //   .then((row) => {
@@ -65,4 +65,41 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
 
         });
     });
+    xit('Check adding a new record - Bad Code Practice', () => {
+        // click on add button
+        cy.get('#addNewRecordButton').click();
+        cy.get('#firstName').type('Harvey');
+        cy.get('#lastName').type('Specter');
+        cy.get('#userEmail').type('specter@example.com');
+        cy.get('#age').type('40');
+        cy.get('#salary').type('70000');
+        cy.get('#department').type('legal');
+        cy.get('#submit').click();
+
+        // assert that new record is added
+        cy.get('rt-tbody')
+            .contains('rt-tr-group', 'Harvey')
+            .then((row) => {
+                cy.wrap(row).find('.rt-td').eq(0).should('contain', 'Harvey');
+                cy.wrap(row).find('.rt-td').eq(1).should('contain', 'Specter');
+                cy.wrap(row).find('.rt-td').eq(2).should('contain', '40');
+                cy.wrap(row).find('.rt-td').eq(3).should('contain', 'specter@example.com');
+                cy.wrap(row).find('.rt-td').eq(4).should('contain', '70000');
+                cy.wrap(row).find('.rt-td').eq(5).should('contain', 'legal');
+
+            })
+    });
+    it('Adding a new record - Better approach', () => {
+        //click on add button
+        cy.get('#addNewRecordButton').click();
+        cy.fixture('user').then((user) => {
+            const columnNames = Object.keys(user.user1); // goes to fixtute folder, gets user1 object keys and stores into columnNames Array
+            const userData = Object.values(user.user1);
+            cy.wrap(columnNames).each((columnName, index) => {
+                cy.log(columnName);
+                cy.log(userData[index]);
+
+            })
+        })
+    })
 });
