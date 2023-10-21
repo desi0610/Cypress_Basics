@@ -96,10 +96,22 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
             const columnNames = Object.keys(user.user1); // goes to fixtute folder, gets user1 object keys and stores into columnNames Array
             const userData = Object.values(user.user1);
             cy.wrap(columnNames).each((columnName, index) => {
-                cy.log(columnName);
-                cy.log(userData[index]);
-
+                //cy.log(columnName);
+                //cy.log(userData[index]);
+                cy.get(`#${columnName}`).type(`${userData[index]}`);
             })
-        })
+            cy.get('#submit').click();
+            // assert that new record is added
+            cy.get('.rt-tbody')
+                .contains('.rt-tr-group', userData[0])
+                .then((row) => {
+                    cy.wrap(userData).each((value, index) => {
+                        cy.wrap(row).find('.rt-td').eq(index).should('contain', value);
+
+                    });
+
+                })
+        });
+
     })
 });
