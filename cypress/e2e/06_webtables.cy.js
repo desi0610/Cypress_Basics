@@ -10,7 +10,7 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
 
     // to skip a test we just use it.skip(.....)
     // only is used to test only one statement
-    it.skip('Check finding and editing a record', () => {
+    it('Check finding and editing a record', () => {
         // locate table body than navigate through this element to find Alden(or targeted name,
         // then update info with another person
         // 1. get me table body
@@ -30,7 +30,7 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
                 cy.wrap(row).find('.rt-td').eq(1).should('contain', 'Specter');
             });
     });
-    it.skip('Check search for different age records', () => {
+    it('Check search for different age records', () => {
         // cy.get('.rt-tbody')
         //   .contains('.rt-tr-group', 'Alden')
         //   .then((row) => {
@@ -65,7 +65,7 @@ describe('Cypress WebTable Tests', { baseUrl: 'https://demoqa.com' }, () => {
 
         });
     });
-    xit('Check adding a new record - Bad Code Practice', () => {
+    it('Check adding a new record - Bad Code Practice', () => {
         // click on add button
         cy.get('#addNewRecordButton').click();
         cy.get('#firstName').type('Harvey');

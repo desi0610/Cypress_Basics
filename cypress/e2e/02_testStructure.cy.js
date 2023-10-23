@@ -21,7 +21,7 @@ describe('Context: My First Test', () => {
     cy.visit('/registration_form');
   });
 
-  it.skip('Test 2', () => {
+  it('Test 2', () => {
     expect(false).to.equal(false);
   });
 
@@ -34,6 +34,24 @@ describe('Context: My First Test', () => {
     expect(false).not.to.equal(true);
   });
   it('Test 5', () => {
-    expect(true).to.equal('5' === 5);
+    expect(true).to.equal('5' == 5);
   });
 });
+
+/**
+ * /// <reference types="cypress"/>
+
+describe('Alerts in Cypress Test Environment', () => {
+   
+    beforeEach(() => {
+      // run before each test case, like @BeforeMethod in TestNG
+      // cy.clearCookie();
+    });
+   
+    it('Opening a web application', () => {
+      cy.visit('/registration_form');
+      
+    });
+  
+  });
+ */
