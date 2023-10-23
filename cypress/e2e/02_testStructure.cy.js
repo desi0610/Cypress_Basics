@@ -34,7 +34,7 @@ describe('Context: My First Test', () => {
     expect(false).not.to.equal(true);
   });
   it('Test 5', () => {
-    expect(true).to.equal('5' == 5);
+    expect(true).to.equal('5' === 5);
   });
 });
 
