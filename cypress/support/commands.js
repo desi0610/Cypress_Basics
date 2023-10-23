@@ -27,8 +27,7 @@
 import 'cypress-file-upload';
 
 Cypress.Commands.add('textExists', (text) => {
-    cy.contains(text).should('exist');
-    });
- // test Exist is the command name, when we are calling this function from another test class: 
- // cy.testExist('parameter) 
-   
+  cy.contains(text).should('exist');
+});
+// test Exist is the command name, when we are calling this function from another test class:
+// cy.testExist('parameter)
