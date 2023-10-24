@@ -1,6 +1,6 @@
 import { auth } from '../../support/pages/auth';
 
-import { NavigateTo, navigateTo } from '../../support/pages/navigation';
+import { navigateTo } from '../../support/pages/navigation';
 
 const LoginLocators = require('../../support/pages/auth'); // we can use this object to reach info in the auth obj
 
